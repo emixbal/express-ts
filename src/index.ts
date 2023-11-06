@@ -1,4 +1,4 @@
-import express, { Application, Request, Response } from "express";
+import express, { Application, Router } from "express";
 import bodyParser from "body-parser"
 import morgan from "morgan"
 import compression from "compression"
@@ -28,8 +28,13 @@ class App {
     }
 
     protected routes(): void {
-        this.app.use('/users', UserRoutes)
-        this.app.use('/auth', AuthRoutes)
+        const v1: Router = express.Router();
+
+        v1.use('/users', UserRoutes);
+        v1.use('/auth', AuthRoutes);
+        
+        this.app.use('/v1', v1);
+
     }
 }
 
