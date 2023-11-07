@@ -1,16 +1,11 @@
 import jwt from "jsonwebtoken";
 
 class JWTToken {
-    private secret: string;
-
-    constructor() {
-        this.secret = process.env.JWT_SECRET || "rahasasiasekalimasee";
-    }
+    private static secret: string = process.env.JWT_SECRET || "rahasasiasekalimasee";
 
     public static generateToken = async (object: string): Promise<string> => {
-        return await jwt.sign(object, this.secret);
+        return await jwt.sign(object, JWTToken.secret);
     }
-
 }
 
-export default JWTToken
+export default JWTToken;
