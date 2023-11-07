@@ -27,7 +27,7 @@ class Controller {
             return res.status(400).json({ "message": "user not found", "data": null })
         }
 
-        const isValid = await PasswordHash.compare(password, user.password)
+        const isValid: boolean = await PasswordHash.compare(password, user.password)
 
         if (!isValid) {
             return res.status(400).json({ "message": "password salah", "data": null })
@@ -54,7 +54,12 @@ class Controller {
 
         const passwordHashed = await PasswordHash.hash(password)
 
-        db.user.create({ username, email, password: passwordHashed })
+        try {
+            await db.user.create({ username, email, password: passwordHashed })
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json({ "message": "nok", "data": null })
+        }
 
         return res.status(200).json({ "message": "ok", "data": null })
     }
