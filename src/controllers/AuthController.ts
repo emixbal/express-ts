@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-const db = require("../db/models")
 
+const db = require("../db/models")
 import PasswordHash from '../utils/PasswordHash'
 
 class Controller {
@@ -22,17 +22,28 @@ class Controller {
             where: whereFilter
         });
 
-        if(!user){
-            return res.status(400).json({ "message": "user not found", "data": null})
+        if (!user) {
+            return res.status(400).json({ "message": "user not found", "data": null })
         }
 
         const isValid = await PasswordHash.compare(password, user.password)
 
         if (!isValid) {
-            return res.status(400).json({ "message": "password salah", "data": null})
+            return res.status(400).json({ "message": "password salah", "data": null })
         }
 
-        return res.status(200).json({ "message": "ok", "data": user })
+        const object = {
+            "id": user.id,
+            "username": user.username,
+            "email": user.email,
+        }
+
+        return res.status(200).json({
+            "message": "ok", "data": {
+                object,
+                // token
+            }
+        })
     }
 
     register = async (req: Request, res: Response): Promise<Response> => {
