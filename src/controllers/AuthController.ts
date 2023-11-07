@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 
 const db = require("../db/models")
 import PasswordHash from '../utils/PasswordHash'
+import jwtToken from '../utils/jwtToken'
 
 class Controller {
     login = async (req: Request, res: Response): Promise<Response> => {
@@ -38,10 +39,12 @@ class Controller {
             "email": user.email,
         }
 
+        const token: string = await jwtToken.generateToken(object)
+
         return res.status(200).json({
             "message": "ok", "data": {
                 object,
-                // token
+                token
             }
         })
     }
