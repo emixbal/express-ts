@@ -1,6 +1,6 @@
 import BaseRoutes from './BaseRoutes'
 import AuthController from "../controllers/AuthController";
-import { validateRegister, validateLogin } from "../middlewares/AuthValidator";
+import { validateRegister, validateLogin } from "../middlewares/validators/AuthValidator";
 
 class Routes extends BaseRoutes {
     public routes(): void {
