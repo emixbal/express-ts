@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
-import jwtToken from '../utils/jwtToken'
+import jwtToken from '../utils/JWTToken'
 
-export const auth = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+export const isAuth = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     let headers: string = req.headers.authorization || ''
     if (!headers) {
         return res.status(401).json({

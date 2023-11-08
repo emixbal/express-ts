@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 
 const db = require("../db/models")
 import PasswordHash from '../utils/PasswordHash'
-import jwtToken from '../utils/jwtToken'
+import jwtToken from '../utils/JWTToken'
 
 class Controller {
     login = async (req: Request, res: Response): Promise<Response> => {
