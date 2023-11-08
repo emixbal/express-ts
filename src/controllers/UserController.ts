@@ -4,6 +4,7 @@ import IController from "./ControllerInterfaces";
 
 class UserController implements IController {
     index(req: Request, res: Response): Response {
+        console.log(res.locals.user);
         return res.status(200).json({ "message": "ok" })
     }
     create(req: Request, res: Response): Response {
