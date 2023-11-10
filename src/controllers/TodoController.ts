@@ -7,6 +7,7 @@ class TodoController implements IController {
         console.log(res.locals.user);
         return res.status(200).json({ "message": "ok" })
     }
+    
     create(req: Request, res: Response): Response {
         return res.status(200).json({ "message": "ok", "data": req.body })
     }

@@ -5,9 +5,9 @@ module.exports = {
     await queryInterface.createTable('todos', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
       },
       name: {
         type: Sequelize.STRING
@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       user_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         allowNull: false,
       },
       created_at: {

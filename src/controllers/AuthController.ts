@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { uuid } from 'uuidv4';
 
 const db = require("../db/models")
 import PasswordHash from '../utils/PasswordHash'
@@ -55,10 +56,14 @@ class Controller {
         const passwordHashed = await PasswordHash.hash(password)
 
         try {
-            await db.user.create({ username, email, password: passwordHashed })
+            await db.user.create({ id: uuid(), username, email, password: passwordHashed })
         } catch (error) {
             console.log(error);
-            return res.status(500).json({ "message": "nok", "data": null })
+            return res.status(500).json({
+                "message": "nok",
+                "data": null,
+                "err": error
+            })
         }
 
         return res.status(200).json({ "message": "ok", "data": null })
