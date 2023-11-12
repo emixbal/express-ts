@@ -31,6 +31,13 @@
   "resolved" "https://registry.npmjs.org/@one-ini/wasm/-/wasm-0.1.1.tgz"
   "version" "0.1.1"
 
+"@types/amqplib@^0.10.4":
+  "integrity" "sha512-Y5Sqquh/LqDxSgxYaAAFNM0M7GyONtSDCcFMJk+DQwYEjibPyW6y+Yu9H9omdkKc3epyXULmFN3GTaeBHhn2Hg=="
+  "resolved" "https://registry.npmjs.org/@types/amqplib/-/amqplib-0.10.4.tgz"
+  "version" "0.10.4"
+  dependencies:
+    "@types/node" "*"
+
 "@types/bcrypt@^5.0.2":
   "integrity" "sha512-6atioO8Y75fNcbmj0G7UjI9lXN2pQ/IGJ2FWT4a/btd0Lk9lQalHLKhkgKVZ3r+spnmWUKfbMi1GEe9wyHQfNQ=="
   "resolved" "https://registry.npmjs.org/@types/bcrypt/-/bcrypt-5.0.2.tgz"
